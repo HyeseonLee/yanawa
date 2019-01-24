@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <!-- 1) 약속 이름 2) 약속 시간 3) 약속 장소 입력 부분 -->
+        <div id = "inputs_table">
+            <ul>
+                <p>약속 이름</p>
+                <input id="pms_name" type="text" value="입력하세요">
+            </ul>
+
+            <ul>
+                <p>시간</p>
+                <input id="pms_date" type="date" value = "2019-01-01">
+                <input id="pms_time" type="time" value = 12:00>
+            </ul>
+
+            <ul>
+                <p>장소</p>
+                <div id="map" style="width:500px;height:400px;"></div>
+            </ul>
+        </div>
+        <!-- 1) 창 확인 여부 입력 부분 -->
+        <div id = "inputs_confirm">
+            <button id = "confirm_yes" type="button" name="button">
+                yes
+            </button>
+            <button id = "confirm_no" type="button" name="button">
+                no
+            </button>
+        </div>
+            <!--  -->
+    </div>
+
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=922b804a1e5a9b89656db406da17e07d"></script> -->
+    <script type="text/javascript" src ="test02.js"></script>
+
+</body>
+
+</html>
