@@ -2,15 +2,48 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Daum 지도 시작하기</title>
+    <title>Daum 지도 시작하기</title>
+    <style>
+        
+        .map_wrap {
+            position:relative;
+            width:100%;
+            height:350px;
+        }
+        .address_wrap {
+            position:  absolute;
+            left:10px;
+            top:10px;
+            border-radius: 2px;
+            background:rgba(255,255,255,0.8);
+            z-index:1;
+            padding:5px;
+        }
+        #address {
+            display:block;
+            margin-top:2px;
+            font-weight: normal;
+        }
+        .map{
+            width: 500px;
+            height: 400px;
+        }
+        
+    </style>
 </head>
 <body>
+    <div class="map_wrap">
+        <div class="map"></div>
+        <div class="address_wrap">
+            <span id="address"></span>
+        </div>
+    </div>
     <!-- 지도를 표시할 div -->
-    <div id="map" style="width:500px;height:400px;"></div>
+    
     <!-- 지도 키 값 받아오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=922b804a1e5a9b89656db406da17e07d&libraries=services"></script>
 	<script>
-		var container = document.getElementById('map');
+		var container = document.getElementsByClassName('map');
 		var options = {
             // 위도와 경도를 입력하여 지도의 시작위치 표시
             center: new daum.maps.LatLng(33.450701, 126.570667),
@@ -18,34 +51,61 @@
 			level: 3
 		};
         // container와 options를 넘겨주어 지도 생성
-        var map = new daum.maps.Map(container, options);
+        var map = new daum.maps.Map(container[0], options);
         // 맵 중앙의 좌표를 받아와서 마커 생성
         var marker = new daum.maps.Marker({
             position: map.getCenter()
         });
-
+// ----------------------------------  주소 표시하기  --------------------------------------------
         // 주소-좌표 변환 객체를 생성
         var geocoder = new daum.maps.services.Geocoder();
         
         // 클릭한 위치에 대한 주소를 표시할 인포윈도우
         var infowindow = new daum.maps.InfoWindow({zindex:1});
+        
         // 지도 좌측 상단에 주소 표시
-    //     searchAddrFromCoords(map.getCenter(),displayCenterInfo);
-    //     function displayCenterInfo(result, status) {
-    //         if (status === daum.maps.services.Status.OK) {
-    //         var infoDiv = document.getElementById('centerAddr');
-
-    //         for(var i = 0; i < result.length; i++) {
-    //         // 행정동의 region_type 값은 'H' 이므로
-    //         if (result[i].region_type === 'H') {
-    //             infoDiv.innerHTML = result[i].address_name;
-    //             break;
-    //         }
-    //     }
-    // }    
-
+        
+        searchAddrFromCoords(map.getCenter(),displayCenterInfo); 
         
         
+        searchDetailAddrFromCoords(map.getCenter(),displayCenterInfo);
+
+        /*
+
+        지금 좌표에 따라서 표시되는 위치가 달라져야 하는데 default의 중앙값으로 주소가 나온다.
+        map.getCenter()를 저 값 말고 계속 최신화 해줘야할 것같다....
+        */
+        
+        
+        function searchAddrFromCoords(coords, callback) {
+            // 좌표로 행정동 주소 정보를 요청합니다
+            geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);       
+        }       
+
+        function searchDetailAddrFromCoords(coords, callback) {
+            // 좌표로 법정동 상세 주소 정보를 요청합니다
+            geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+}
+
+        // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+        function displayCenterInfo(result, status) {
+            if (status === daum.maps.services.Status.OK) {
+            var infoDiv = document.getElementById('address');
+
+            for(var i = 0; i < result.length; i++) {
+            // 행정동의 region_type 값은 'H' 이므로
+            if (result[i].region_type === 'H') {
+                infoDiv.innerHTML = result[i].address_name;
+                
+                break;
+            }
+            }
+            }  
+        }  
+
+
+    
+// ---------------------------------------------------------------------------------------------
         // 지도에 마커 표시
         marker.setMap(map);
         
@@ -59,6 +119,9 @@
         
         // 마크를 중지시키기 위한 변수
         var markerInterval;
+        
+        // 실시간으로 주소를 띄우기 위한 변수
+        var address_interval;
 
         
 
@@ -78,14 +141,24 @@
             position_list.push(longitude);
             
             var check = '위도는' + latitude + ' 경도는' + longitude;
-            // console.log(typeof(latitude));
+            
             console.log(check); // console 에서 확인
             
             // 마크 움직이기
-            // 당 moveMarkerPosition 함수를 실행
-            markerInterval = setInterval(moveMarkerPosition, 500); // 600이 1초인거같음
-         } )
-         function moveMarkerPosition() {
+            // 약 1초당 move_marker_position 함수를 실행
+            markerInterval = setInterval(move_marker_position, 500); // 600이 1초인거같음
+
+            address_interval = setInterval(function(){
+                
+                // position의 type 은 latlng
+                // 마크로 찍는 위치의 위치정보를 가지고 와서 이를 주소로 띄워준다.
+                var position = new daum.maps.LatLng(latitude, longitude);
+               // 주소로 띄워주는 함수
+                searchAddrFromCoords(position,displayCenterInfo); 
+            },500 );
+        })            
+
+         function move_marker_position() {
             count = count + 1;
             // 위치를 변화시킴 지금은 기울기 1로 움직이지만 도착지점이 정해지면 그에 맞춰서 바꿔주자.
             var now_position = new daum.maps.LatLng(latitude+count*0.00001 , longitude+count*0.00001);
@@ -97,6 +170,8 @@
                 clearInterval(markerInterval);
             }
         }
+
+        
 	</script>
 </body>
 </html>
