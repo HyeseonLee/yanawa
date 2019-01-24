@@ -28,6 +28,18 @@
         // 지도에 마커 표시
         marker.setMap(map);
         
+        //위도와 경도
+        var longitude;
+        
+        
+        // 마크가 언제까지 움직일 지 결정하기 위한 변수
+        var count = 0;
+        
+        // 마크를 중지시키기 위한 변수
+        var markerInterval;
+
+        
+
         // 지도에 클릭 이벤트 등록 및 마지막 파라미터로 넘어온 함수 호출
         daum.maps.event.addListener(map, 'click', function(mouseEvent){
             // 클릭한 위도, 경도 정보 가져오기
@@ -36,31 +48,33 @@
             // 마커 위치를 클릭한 위치로 이동
             marker.setPosition(latlng);
             
+            position_list = [];    
 
-            var latitude = latlng.getLat(); // 위도, type 은 number
-            var longitude = latlng.getLng(); // 경도
+            latitude = latlng.getLat(); //type 은 number
+            longitude = latlng.getLng(); 
+            position_list.push(latitude);
+            position_list.push(longitude);
+            
             var check = '위도는' + latitude + ' 경도는' + longitude;
             // console.log(typeof(latitude));
             console.log(check); // console 에서 확인
-
-       
+            
             // 마크 움직이기
-            for (var i =0;i<100;i++){
-                // 33.450701, 126.570667
-                var myPosition = new daum.maps.LatLng(latitude+i*0.000001 , longitude+i*0.000001);
-                console.log(myPosition);
-                // var now_position = new daum.maps.LatLng(latitude+i*0.001, longtitude+i*0.001);
-
-                // console.log(now_position);
-            //     marker = new daum.maps.Marker({
-            //         position : now_position
-            //     });
-            //     marker.setMap(map);
-            //     console.log(i);
-                    
-            }
-
+            // 당 moveMarkerPosition 함수를 실행
+            markerInterval = setInterval(moveMarkerPosition, 500); // 600이 1초인거같음
          } )
+         function moveMarkerPosition() {
+            count = count + 1;
+            // 위치를 변화시킴 지금은 기울기 1로 움직이지만 도착지점이 정해지면 그에 맞춰서 바꿔주자.
+            var now_position = new daum.maps.LatLng(latitude+count*0.00001 , longitude+count*0.00001);
+            // 변한 위치에 대하여 marker를 다시 찍어줌
+            marker.setPosition(now_position);  
+            
+            if(count>5) {
+                // 5번 이동을 하면 중지시킨다.
+                clearInterval(markerInterval);
+            }
+        }
 	</script>
 </body>
 </html>
@@ -72,6 +86,6 @@
 
 그 위치를 바탕으로 가장 가까운 위치 가져오기
 
-gps 실시간으로 받아서 지도에 마킹하기 - ing
+gps 실시간으로 받아서 지도에 마킹하기 - 해결
 
 -->
