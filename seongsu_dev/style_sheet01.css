@@ -111,7 +111,7 @@ body {
     background-repeat: no-repeat
 }
 
-.invited .font_, .start .font_ {
+.font_ {
     font-size: 30px;
 }
 
@@ -227,4 +227,60 @@ body {
     background-repeat: no-repeat;
     width: 221px;
     height: 192px;
+}
+
+.main-container.rank {
+    background-image: url(../img_src/6_rank.jpg);
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+.rank #sub-container1 {
+    flex : 60 0 0;
+}
+
+.rank #sub-container2 {
+    flex : 235 0 0;
+    display: flex;
+}
+
+.rank #sub-container3 {
+    flex : 25 0 0;
+}
+
+.rank #sub-container4 {
+    display: flex;
+    flex : 810 0 0;
+}
+
+.rank #sub-container4 .temp1 {
+    flex : 200 0 0;
+    display: flex;
+    flex-flow: column;
+}
+
+.rank #sub-container4 .temp2 {
+    flex : 460 0 0;
+}
+
+
+.rank #ID1 {
+    background-image: url(../img_src/6_rank1.jpg);
+}.rank #ID2 {
+    background-image: url(../img_src/6_rank2.jpg);
+}.rank #ID3 {
+    background-image: url(../img_src/6_rank3.jpg);
+}.rank #ID4 {
+    background-image: url(../img_src/6_rank4.jpg);
+}.rank #ID5 {
+    background-image: url(../img_src/6_rank5.jpg);
+}.rank #ID6 {
+    background-image: url(../img_src/6_rank6.jpg);
+}
+
+.rank .mems {
+    width : 151px;
+    height: 137px;
+    background-position: center center;
+    background-repeat: no-repeat
 }
