@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display : flex;
+	justify-content: center;
+  align-items: stretch;
+}
+
+.class-to-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+        display: flex;
+        width: 640px;
+        height: 1136px;
+}
+
+
+.link {
+    background-image: url(image/4_invite.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
+
+.약속이름 {
+    position: absolute;
+    bottom: 492px;
+    right: 563px;
+    width: 527px;
+    height: 75px;
+    background: red;
+}
+
+.약속시간 {
+    position: absolute;
+    bottom: 413px;
+    right: 563px;
+    width: 527px;
+    height: 77px;
+    background: blue;
+}
+
+.약속장소 {
+    position: absolute;
+    bottom: 300px;
+    right: 563px;
+    width: 527px;
+    height: 77px;
+    background: green;
+}

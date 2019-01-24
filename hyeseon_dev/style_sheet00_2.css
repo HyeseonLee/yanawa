@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display : flex;
+	justify-content: center;
+  align-items: stretch;
+}
+
+.class-to-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.link {
+    background-image: url(image/1_main.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
+
+
+.image_default {
+    background-image: url(image/1_newbutton.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
+
+.hidden_button1 {
+  background-color: Transparent;
+  border:none;
+  cursor: pointer;
+
+}
+
+.image {
+    background-image: url(image/1_madepromise.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
+
+.hidden_button2 {
+  background-color: Transparent;
+  border:none;
+  cursor: pointer;
+}
