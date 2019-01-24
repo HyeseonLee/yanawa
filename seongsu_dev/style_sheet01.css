@@ -1,26 +1,43 @@
+/* https://code.tutsplus.com/ko/tutorials/the-30-css-selectors-you-must-memorize--net-16048 */
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	display : flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
     align-items: stretch;
 }
 
 .class-to-align-center {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.main-conatainer {
-        width: 640px;
-        height: 1136px;
+.main-container {
+    width: 640px;
+    height: 1136px;
 }
 
-.intro {
+.main-container.intro {
     background-image: url(../img_src/yanawa_intro.jpg);
-    background-position:center center;
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+.intro .hidden-button {
+    background-color: Transparent;
+    border: none;
+    /* Your can add different style/properties of button Here*/
+    cursor: pointer;
+    width: 360px;
+    height: 90px;
+}
+
+.main-container.m-promise {
+    background-image: url(../img_src/yanawa_intro.jpg);
+    background-position: center center;
     background-repeat: no-repeat
 }
