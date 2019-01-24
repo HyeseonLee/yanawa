@@ -37,7 +37,70 @@ body {
 }
 
 .main-container.m-promise {
-    background-image: url(../img_src/yanawa_intro.jpg);
+    background-image: url(../img_src/2_make.jpg);
     background-position: center center;
     background-repeat: no-repeat
 }
+
+.main-container .container {
+    height: inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.m-promise .hidden-button {
+    background-color: Transparent;
+    border: none;
+    /* Your can add different style/properties of button Here*/
+    cursor: pointer;
+}
+
+.m-promise #container-1 {
+    flex : 1.9583 0 0
+}
+
+.m-promise #container-2 {
+    display: flex;
+    flex-direction: row;
+    flex : 1 0 0;
+}
+
+.m-promise #container-3 {
+    flex : 1.775 0 0;
+}
+
+.under-container-1 {
+    flex : 167 0 0;
+}
+.under-container-2 {
+    display : flex;
+    flex-direction: column;
+    justify-content: stretch;
+    flex : 473 0 0;
+}
+
+.under-container-3 {
+    display: flex;
+    flex : 167 0 0;
+}
+
+.under-container-2 ul {
+    display: flex;
+    align-items: center;
+    flex : 1 0 0;
+}
+
+.under-container-2 a {
+    height: 100%;
+    width: 100%;
+}
+
+#container-3 > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* 맵 width 530 높이 280 */
