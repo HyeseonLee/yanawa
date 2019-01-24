@@ -58,17 +58,17 @@ body {
     cursor: pointer;
 }
 
-.m-promise #container-1 {
-    flex : 1.9583 0 0
+.m-promise #container-1, .invited #container-1 {
+    flex : 2 0 0
 }
 
-.m-promise #container-2 {
+.m-promise #container-2, .invited #container-2 {
     display: flex;
     flex-direction: row;
     flex : 1 0 0;
 }
 
-.m-promise #container-3 {
+.m-promise #container-3, .invited #container-3 {
     flex : 1.775 0 0;
 }
 
@@ -98,9 +98,54 @@ body {
     width: 100%;
 }
 
-#container-3 > div {
+.m-promise #container-3 > div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 /* 맵 width 530 높이 280 */
+
+.main-container.invited {
+    background-image: url(../img_src/4_invite.jpg);
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+.invited .font_ {
+    font-size: 30px;
+}
+
+.invited .button_size {
+    width : 527px;
+    height: 81px;
+    display: flex;
+}
+
+.invited .button_yes {
+    background-image: url(../img_src/4_yes.jpg);
+}
+
+.invited .button_no {
+    background-image: url(../img_src/4_no.jpg);
+}
+
+.invited #container-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.invited #container-3 .temp1 {
+    flex : 105 0 0
+}
+
+.invited #container-3 .temp2 {
+    display: flex;
+    flex-direction: column;
+    flex : 190 0 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invited #container-3 .temp3 {
+    flex : 130 0 0
+}
