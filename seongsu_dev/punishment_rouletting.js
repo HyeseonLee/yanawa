@@ -12,6 +12,11 @@ function rouletting_punishment() {
     return punishment_list[ran_num]
 }
 
+// HTML 구문에서 벌칙 text 변경
+function change_punishment_text() {
+
+}
+
 // 룰렛버튼 작동 구문
 var roullet_Button = null //FIXME
 var roullet_text_HTML = null //FIXME

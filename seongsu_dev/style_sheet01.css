@@ -1,0 +1,26 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display : flex;
+	justify-content: center;
+    align-items: stretch;
+}
+
+.class-to-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.main-conatainer {
+        width: 640px;
+        height: 1136px;
+}
+
+.intro {
+    background-image: url(../img_src/yanawa_intro.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
