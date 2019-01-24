@@ -23,6 +23,8 @@
         var marker = new daum.maps.Marker({
             position: map.getCenter()
         });
+        
+        
         // 지도에 마커 표시
         marker.setMap(map);
         
@@ -30,23 +32,46 @@
         daum.maps.event.addListener(map, 'click', function(mouseEvent){
             // 클릭한 위도, 경도 정보 가져오기
             var latlng = mouseEvent.latLng;
+            
             // 마커 위치를 클릭한 위치로 이동
             marker.setPosition(latlng);
+            
 
             var latitude = latlng.getLat(); // 위도, type 은 number
             var longitude = latlng.getLng(); // 경도
             var check = '위도는' + latitude + ' 경도는' + longitude;
             // console.log(typeof(latitude));
             console.log(check); // console 에서 확인
-longitude
-        } )
+
+       
+            // 마크 움직이기
+            for (var i =0;i<100;i++){
+                // 33.450701, 126.570667
+                var myPosition = new daum.maps.LatLng(latitude+i*0.000001 , longitude+i*0.000001);
+                console.log(myPosition);
+                // var now_position = new daum.maps.LatLng(latitude+i*0.001, longtitude+i*0.001);
+
+                // console.log(now_position);
+            //     marker = new daum.maps.Marker({
+            //         position : now_position
+            //     });
+            //     marker.setMap(map);
+            //     console.log(i);
+                    
+            }
+
+         } )
 	</script>
 </body>
 </html>
 
 
-<!-- 위치 찍었을 때 위치 정보가져오기
+<!-- 
+
+위치 찍었을 때 위치 정보가져오기 - 해결
 
 그 위치를 바탕으로 가장 가까운 위치 가져오기
 
-gps 실시간으로 받아서 지도에 마킹하기 -->
+gps 실시간으로 받아서 지도에 마킹하기 - ing
+
+-->
