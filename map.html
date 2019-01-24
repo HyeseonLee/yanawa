@@ -32,83 +32,94 @@
     </style>
 </head>
 <body>
+    <!-- ////////////////////////////////  지도 표시할 레이아웃  //////////////////////////////////////// -->
     <div class="map_wrap">
+        <!-- 지도가 들어갈 div -->
         <div class="map"></div>
         <div class="address_wrap">
+            <!-- 주소가 들어갈 div -->
             <span id="address"></span>
         </div>
     </div>
-    <!-- 지도를 표시할 div -->
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
     
+
     <!-- 지도 키 값 받아오기 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=922b804a1e5a9b89656db406da17e07d&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=922b804a1e5a9b89656db406da17e07d&libraries=services"></script>
+    
+
 	<script>
+
+    // ---------------------------------- 지도만들기  --------------------------------------------
 		var container = document.getElementsByClassName('map');
 		var options = {
-            // 위도와 경도를 입력하여 지도의 시작위치 표시
+            // 위도와 경도를 입력하여 지도의 시작위치 표시, 카카오 본사
             center: new daum.maps.LatLng(33.450701, 126.570667),
             // 지도의 확대 정도, 자연수 값
 			level: 3
 		};
         // container와 options를 넘겨주어 지도 생성
         var map = new daum.maps.Map(container[0], options);
+    // ------------------------------------------------------------------------------------------
+
+
+    // ---------------------------------- 목적지 마커 생성  --------------------------------------------
         // 맵 중앙의 좌표를 받아와서 마커 생성
         var marker = new daum.maps.Marker({
             position: map.getCenter()
         });
-// ----------------------------------  주소 표시하기  --------------------------------------------
-        // 주소-좌표 변환 객체를 생성
-        var geocoder = new daum.maps.services.Geocoder();
-        
-        // 클릭한 위치에 대한 주소를 표시할 인포윈도우
-        var infowindow = new daum.maps.InfoWindow({zindex:1});
-        
-        // 지도 좌측 상단에 주소 표시
-        
-        searchAddrFromCoords(map.getCenter(),displayCenterInfo); 
-        
-        
-        searchDetailAddrFromCoords(map.getCenter(),displayCenterInfo);
-
-        /*
-
-        지금 좌표에 따라서 표시되는 위치가 달라져야 하는데 default의 중앙값으로 주소가 나온다.
-        map.getCenter()를 저 값 말고 계속 최신화 해줘야할 것같다....
-        */
-        
-        
-        function searchAddrFromCoords(coords, callback) {
-            // 좌표로 행정동 주소 정보를 요청합니다
-            geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);       
-        }       
-
-        function searchDetailAddrFromCoords(coords, callback) {
-            // 좌표로 법정동 상세 주소 정보를 요청합니다
-            geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
-
-        // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-        function displayCenterInfo(result, status) {
-            if (status === daum.maps.services.Status.OK) {
-            var infoDiv = document.getElementById('address');
-
-            for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                
-                break;
-            }
-            }
-            }  
-        }  
-
-
     
-// ---------------------------------------------------------------------------------------------
         // 지도에 마커 표시
         marker.setMap(map);
+    // ------------------------------------------------------------------------------------------
+
+    // ---------------------------------- 참가자 마커 생성  --------------------------------------------
+    // 마커를 표시할 위치와 title 객체 배열입니다 
+        var positions = [
+            {
+                title: '카카오', 
+                latlng: new daum.maps.LatLng(33.450705, 126.570677)
+            },
+            {
+                title: '생태연못', 
+                latlng: new daum.maps.LatLng(33.450936, 126.569477)
+            },
+            {
+                title: '텃밭', 
+                latlng: new daum.maps.LatLng(33.450879, 126.569940)
+            },
+            {
+                title: '근린공원',
+                latlng: new daum.maps.LatLng(33.451393, 126.570738)
+            }
+        ];
+        // 이미지 링크, 여기 링크를 우리 사진으로 넣어주면 된다.
+        // image 배열을 만들고 url을 담아서 리스트 인덱스로 넘겨주자.
+        var image_src = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
         
+        // 마커 위치 객체의 수만큼 반복
+        for (var i=0;i<positions.length;i++){
+            // 이미지의 크기 결정
+            var image_size = new daum.maps.Size(24,35);
+            // 이미지 생성
+            var marker_image = new daum.maps.MarkerImage(image_src, image_size);
+
+            // 마커 생성
+             var marker = new daum.maps.Marker({
+                 map: map,
+                 position: positions[i].latlng,
+                 title: positions[i].title,
+                 image: marker_image
+             });
+        }
+
+
+
+
+
+   // ------------------------------------------------------------------------------------------
+
+
         //위도와 경도
         var latitude;
         var longitude;
@@ -153,11 +164,17 @@
                 // position의 type 은 latlng
                 // 마크로 찍는 위치의 위치정보를 가지고 와서 이를 주소로 띄워준다.
                 var position = new daum.maps.LatLng(latitude, longitude);
-               // 주소로 띄워주는 함수
+               //  마크 위치가 바뀔 때마다 최신화 해서 주소로 띄워주는 함수
+               
                 searchAddrFromCoords(position,displayCenterInfo); 
             },500 );
-        })            
+        })       
+        
+        
 
+
+
+        // 마커를 이동 시키는 함수
          function move_marker_position() {
             count = count + 1;
             // 위치를 변화시킴 지금은 기울기 1로 움직이지만 도착지점이 정해지면 그에 맞춰서 바꿔주자.
@@ -170,7 +187,40 @@
                 clearInterval(markerInterval);
             }
         }
+// ----------------------------------  주소 표시하기  --------------------------------------------
+        // 주소-좌표 변환 객체를 생성
+        var geocoder = new daum.maps.services.Geocoder();
+        
+        // 클릭한 위치에 대한 주소를 표시할 인포윈도우
+        var infowindow = new daum.maps.InfoWindow({zindex:1});
+        
+        // 지도 좌측 상단에 주소 표시
+        // 첫번째 주소
+        searchAddrFromCoords(map.getCenter(),displayCenterInfo); 
+    
+        
+        // 좌표로 행정동 주소 정보를 요청합니다
+        function searchAddrFromCoords(coords, callback) {
+            geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);       
+        }       
 
+
+        // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+        function displayCenterInfo(result, status) {
+            if (status === daum.maps.services.Status.OK) {
+            var infoDiv = document.getElementById('address');
+
+            for(var i = 0; i < result.length; i++) {
+            // 행정동의 region_type 값은 'H' 이므로
+            if (result[i].region_type === 'H') {
+                infoDiv.innerHTML = result[i].address_name;
+                
+                break;
+            }
+            }
+            }  
+        }  
+// ---------------------------------------------------------------------------------------------
         
 	</script>
 </body>
