@@ -6,8 +6,8 @@
     <style>
         
         .map_wrap {
-            position:relative;
-            width:100%;
+            /* position:relative; */
+            /* width:100%; */
             height:350px;
         }
         .address_wrap {
@@ -28,6 +28,16 @@
             width: 500px;
             height: 400px;
         }
+
+        #start_button{
+            z-index: 10;
+            position: absolute;
+            top: 400px;
+            left: 200px;
+            width: 300px;
+            padding: 20px;
+
+        }
         
     </style>
 </head>
@@ -41,6 +51,7 @@
             <span id="address"></span>
         </div>
     </div>
+    <input type="button" id="start_button" onclick="start_button();" value="버튼1" />
     <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
     
 
@@ -54,7 +65,8 @@
 		var container = document.getElementsByClassName('map');
 		var options = {
             // 위도와 경도를 입력하여 지도의 시작위치 표시, 카카오 본사
-            center: new daum.maps.LatLng(33.450701, 126.570667),
+            center: new daum.maps.LatLng(33.4507, 126.5706),
+            // center: new daum.maps.LatLng(33.4520wr254329765 , 126.57307469518894),
             // 지도의 확대 정도, 자연수 값
 			level: 3
 		};
@@ -67,27 +79,37 @@
     // 마커를 표시할 위치와 title 객체 배열입니다 
         var positions = [
             {
-                title: '카카오', 
-                latlng: new daum.maps.LatLng(33.450705, 126.570677)
+                name: '민성', 
+                latlng: new daum.maps.LatLng(33.4520 , 126.5730)
             },
             {
-                title: '생태연못', 
-                latlng: new daum.maps.LatLng(33.450936, 126.569477)
+                name: '성수', 
+                latlng: new daum.maps.LatLng(33.4503, 126.5731)
+                
             },
             {
-                title: '텃밭', 
-                latlng: new daum.maps.LatLng(33.450879, 126.569940)
+                name: '혜선', 
+                latlng: new daum.maps.LatLng(33.44912547813943 , 126.57138957522403)
             },
             {
-                title: '근린공원',
-                latlng: new daum.maps.LatLng(33.451393, 126.570738)
+                name: '윤정',
+                latlng: new daum.maps.LatLng(33.452187037021936 , 126.57026668574095)
+                
+            },
+            {
+                name: '지은',
+                latlng: new daum.maps.LatLng(33.44963088190738 , 126.5689348793178)
             }
         ];
+        
+        
         // 이미지 링크, 여기 링크를 우리 사진으로 넣어주면 된다.
         // image 배열을 만들고 url을 담아서 리스트 인덱스로 넘겨주자.
         var image_src = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
         
+        marker_list = []
         // 마커 위치 객체의 수만큼 반복
+        console.log(positions.length);
         for (var i=0;i<positions.length;i++){
             // 이미지의 크기 결정
             var image_size = new daum.maps.Size(24,35);
@@ -95,13 +117,18 @@
             var marker_image = new daum.maps.MarkerImage(image_src, image_size);
 
             // 마커 생성
-             var marker = new daum.maps.Marker({
+             marker = new daum.maps.Marker({
                  map: map,
                  position: positions[i].latlng,
-                 title: positions[i].title,
+                 name: positions[i].name,
                  image: marker_image
              });
+             
+             marker_list.push(marker);
+            //  console.log(marker_list);
+
         }
+        console.log(marker_list);
    // ------------------------------------------------------------------------------------------
    // --------------------------- 사용자 마커를 표시할 원 반경 형성  -----------------------------------
    
@@ -133,6 +160,7 @@
     
         // 지도에 마커 표시
         marker.setMap(map);
+        console.log('######'+marker);
     // ------------------------------------------------------------------------------------------
 
 
@@ -149,9 +177,66 @@
         
         // 실시간으로 주소를 띄우기 위한 변수
         var address_interval;
-
+// ---------------------------------- 참가자들 출발하는 함수 --------------------------------------------
         
+        //각각의 위도 경도 기울기를 리스트안에 담아두기
+        var latitude_list = [];
+        var longitude_list = [];
+        var incline_list = [];
+        for (var i=0;i<5;i++){
+                    latitude_list.push(positions[i].latlng.getLat());
+                    longitude_list.push(positions[i].latlng.getLng());
+                    
+                    incline_list.push((latitude_list[i]-33.4507)/(longitude_list[i]-126.5706));
+        }
+        
+        // 버튼 누르면 실행
+        function start_button(){
+            // 마크 움직이기
+            // 약 1초당 move_marker_position 함수를 실행
+            markerInterval = setInterval(move_marker_position, 500); // 600이 1초인거같음
+        }
 
+        // 마커를 이동 시키는 함수
+        function move_marker_position() {
+            
+            
+            
+            
+                count = count + 1;
+                for (var i=0;i<5;i++){
+                    // latitude = positions[i].latlng.getLat();
+                    // longitude = positions[i].latlng.getLng();
+                    // var incline = (latitude-33.4507)/(longitude-126.5706);
+                    
+                    if (longitude_list[i]>126.5706){
+                        var now_position = new daum.maps.LatLng(latitude_list[i]-count*0.00001*incline_list[i] , longitude_list[i]-count*0.00001);
+                    }
+                    else{
+                        now_position = new daum.maps.LatLng(latitude_list[i]+count*0.00001*incline_list[i] , longitude_list[i]+count*0.00001);
+                    }
+                    marker_list[i].setPosition(now_position);     
+                    if(count>100000) {
+                    // 5번 이동을 하면 중지시킨다.
+                        clearInterval(markerInterval);
+            }
+            }
+            }
+                
+            
+            
+            
+            
+            // 위치를 변화시킴 지금은 기울기 1로 움직이지만 도착지점이 정해지면 그에 맞춰서 바꿔주자.
+            
+            // 변한 위치에 대하여 marker를 다시 찍어줌
+            // marker.setPosition(now_position);  
+            // marker_list[0].setPosition(now_position); 
+            // marker.setPosition(now_position); 
+
+            
+        
+// ------------------------------------------------------------------------------------------
         // 지도에 클릭 이벤트 등록 및 마지막 파라미터로 넘어온 함수 호출
         daum.maps.event.addListener(map, 'click', function(mouseEvent){
             // 클릭한 위도, 경도 정보 가져오기
@@ -171,9 +256,7 @@
             
             console.log(check); // console 에서 확인
             
-            // 마크 움직이기
-            // 약 1초당 move_marker_position 함수를 실행
-            markerInterval = setInterval(move_marker_position, 500); // 600이 1초인거같음
+            
 
             address_interval = setInterval(function(){
                 
@@ -190,19 +273,7 @@
 
 
 
-        // 마커를 이동 시키는 함수
-         function move_marker_position() {
-            count = count + 1;
-            // 위치를 변화시킴 지금은 기울기 1로 움직이지만 도착지점이 정해지면 그에 맞춰서 바꿔주자.
-            var now_position = new daum.maps.LatLng(latitude+count*0.00001 , longitude+count*0.00001);
-            // 변한 위치에 대하여 marker를 다시 찍어줌
-            marker.setPosition(now_position);  
-            
-            if(count>5) {
-                // 5번 이동을 하면 중지시킨다.
-                clearInterval(markerInterval);
-            }
-        }
+        
 // ----------------------------------  주소 표시하기  --------------------------------------------
         // 주소-좌표 변환 객체를 생성
         var geocoder = new daum.maps.services.Geocoder();
