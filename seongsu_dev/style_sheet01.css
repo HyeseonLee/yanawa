@@ -111,11 +111,11 @@ body {
     background-repeat: no-repeat
 }
 
-.invited .font_ {
+.invited .font_, .start .font_ {
     font-size: 30px;
 }
 
-.invited .button_size {
+.button_size {
     width : 527px;
     height: 81px;
     display: flex;
@@ -148,4 +148,83 @@ body {
 
 .invited #container-3 .temp3 {
     flex : 130 0 0
+}
+
+.main-container.start {
+    background-image: url(../img_src/5_promise.jpg);
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+.start .container {
+    flex-direction: row;
+}
+
+.start #container-1 {
+    flex : 55 0 0;
+}
+
+.start #container-2 {
+    flex : 530 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.start #container-3 {
+    flex : 55 0 0;
+}
+
+.start #sub-container1 {
+    flex : 60 0 0;
+}
+
+.start #sub-container2 {
+    flex : 235 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.start #sub-container3 {
+    flex : 75 0 0;
+}
+
+.start #sub-container4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex : 660 0 0;
+}
+.start #sub-container5 {
+    flex : 110 0 0;
+}
+.start .under-container-2 {
+    display: flex;
+    justify-content: space-around;
+}
+.start #sub-container5 a {
+    background-image: url(../img_src/5_start.jpg);
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+
+.start #ID1 {
+    background-image: url(../img_src/5_member1.jpg);
+}.start #ID2 {
+    background-image: url(../img_src/5_member2.jpg);
+}.start #ID3 {
+    background-image: url(../img_src/5_member3.jpg);
+}.start #ID4 {
+    background-image: url(../img_src/5_member4.jpg);
+}.start #ID5 {
+    background-image: url(../img_src/5_member5.jpg);
+}.start #ID6 {
+    background-image: url(../img_src/5_member6.jpg);
+}
+
+.start .members {
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 221px;
+    height: 192px;
 }
