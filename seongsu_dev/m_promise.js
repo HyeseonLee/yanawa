@@ -21,40 +21,45 @@ var buttons = document.querySelectorAll('button')
 var button_yes = buttons[0]
 var button_no = buttons[1]
 //////////////////////////////////////////////////////////
+
 // MAP API
-// var container = document.getElementById('map');
-// var options = {
-// 	// 위도와 경도를 입력하여 지도의 시작위치 표시
-// 	center: new daum.maps.LatLng(33.450701, 126.570667),
-// 	// 지도의 확대 정도, 자연수 값
-// 	level: 3
-// };
-// // container와 options를 넘겨주어 지도 생성
-// var map = new daum.maps.Map(container, options);
-// // 맵 중앙의 좌표를 받아와서 마커 생성
-// var marker = new daum.maps.Marker({
-// 	position: map.getCenter()
-// });
-// // 지도에 마커 표시
-// marker.setMap(map);
-//
-// // 지도에 클릭 이벤트 등록 및 마지막 파라미터로 넘어온 함수 호출
-// daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-// 	// 클릭한 위도, 경도 정보 가져오기
-// 	var latlng = mouseEvent.latLng;
-// 	// 마커 위치를 클릭한 위치로 이동
-// 	marker.setPosition(latlng);
-//
-// 	var latitude = latlng.getLat(); // 위도, type 은 number
-// 	var longitude = latlng.getLng(); // 경도
-// 	var check = '위도는' + latitude + ' 경도는' + longitude;
-// 	// console.log(typeof(latitude));
-// 	console.log(check); // console 에서 확인
-// 	longitude
-// })
+var container = document.getElementById('map');
+var options = {
+	// 위도와 경도를 입력하여 지도의 시작위치 표시
+	center: new daum.maps.LatLng(33.450701, 126.570667),
+	// 지도의 확대 정도, 자연수 값
+	level: 3
+};
+// container와 options를 넘겨주어 지도 생성
+var map = new daum.maps.Map(container, options);
+// 맵 중앙의 좌표를 받아와서 마커 생성
+var marker = new daum.maps.Marker({
+	position: map.getCenter()
+});
+// 지도에 마커 표시
+marker.setMap(map);
+
+var latitude;
+var longitude;
+
+// 지도에 클릭 이벤트 등록 및 마지막 파라미터로 넘어온 함수 호출
+daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+	// 클릭한 위도, 경도 정보 가져오기
+	var latlng = mouseEvent.latLng;
+	// 마커 위치를 클릭한 위치로 이동
+	marker.setPosition(latlng);
+
+	latitude = latlng.getLat(); // 위도, type 은 number
+	longitude = latlng.getLng(); // 경도
+	var check = '위도는' + latitude + ' 경도는' + longitude;
+	// console.log(typeof(latitude));
+	console.log(check); // console 에서 확인
+	longitude
+})
+
 ///////////////////////////////////////////////////////////////////////////////////
 
-//TEST
+//function
 function namecheck() {
 	var pms_name_obj = document.getElementById('pms_name');
 	var pms_name = pms_name_obj.value
@@ -72,6 +77,7 @@ function timecheck() {
 	return new Date(pms_time + " " + pms_date);
 }
 
+// Yes 버튼 눌렀을 때 확인
 button_yes.addEventListener('click', function() {
 	var inputed_time = timecheck()
 	//Check time time diff
@@ -83,6 +89,8 @@ button_yes.addEventListener('click', function() {
 	if (pms_name == "") {
 		alert("이름을 입력하세요")
 	}
+	// 현재 지도의 마킹 위치를 체크하고 있는지 확인
+	console.log(latitude + "\n" + longtitude)
 })
 
 
