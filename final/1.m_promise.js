@@ -4,8 +4,6 @@
 var current_time = new Date();
 // HTML에서 input들 모여있는 div
 var inputs_table_obj = document.getElementById('inputs_table')
-// 디폴트 문자 (사용 X)
-var pms_name_default = "입력하세요"
 //
 var pms_name_obj = document.getElementById('pms_name');
 var pms_name = pms_name_obj.value
@@ -17,26 +15,29 @@ var pms_time_obj = document.getElementById('pms_time')
 var pms_time = pms_time_obj.value
 
 // 확인 취소 버튼
-var buttons = document.querySelectorAll('button')
-var button_yes = buttons[0]
-var button_no = buttons[1]
+// var buttons = document.querySelectorAll('button')
+// var button_yes = buttons[0]
+// var button_no = buttons[1]
+
+var button_yes = document.getElementsByClassName('hidden-button')[0];
+
 //////////////////////////////////////////////////////////
-
-// MAP API
-var container = document.getElementById('map');
-var options = {
-	// 위도와 경도를 입력하여 지도의 시작위치 표시
-	center: new daum.maps.LatLng(33.450701, 126.570667),
-	// 지도의 확대 정도, 자연수 값
-	level: 3
-};
-// container와 options를 넘겨주어 지도 생성
-var map = new daum.maps.Map(container, options);
-// 맵 중앙의 좌표를 받아와서 마커 생성
-var marker = new daum.maps.Marker({
-	position: map.getCenter()
-});
-
+//
+// // MAP API
+// var container = document.getElementById('map');
+// var options = {
+// 	// 위도와 경도를 입력하여 지도의 시작위치 표시
+// 	center: new daum.maps.LatLng(33.450701, 126.570667),
+// 	// 지도의 확대 정도, 자연수 값
+// 	level: 3
+// };
+// // container와 options를 넘겨주어 지도 생성
+// var map = new daum.maps.Map(container, options);
+// // 맵 중앙의 좌표를 받아와서 마커 생성
+// var marker = new daum.maps.Marker({
+// 	position: map.getCenter()
+// });
+//
 // // 지도에 마커 표시
 // marker.setMap(map);
 //
@@ -57,8 +58,8 @@ var marker = new daum.maps.Marker({
 // 	console.log(check); // console 에서 확인
 // 	longitude
 // })
-//
-// ///////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////
 
 //function
 function namecheck() {
@@ -84,14 +85,25 @@ button_yes.addEventListener('click', function() {
 	//Check time time diff
 	if (inputed_time < current_time) {
 		alert("올바른 시간을 입력해주세요")
+		return;
 	}
 	// Check pms_name
 	var pms_name = namecheck()
 	if (pms_name == "") {
 		alert("이름을 입력하세요")
+		return;
 	}
+
+	var d = inputed_time;
+	var inputed_time2 = d.getFullYear() +"년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + d.getHours() + "시 " + d.getMinutes() + "분"
 	// 현재 지도의 마킹 위치를 체크하고 있는지 확인
-	console.log(latitude + "\n" + longtitude)
+	var temp = "\n약속 이름 : " + pms_name + "\n약속 시간 : " + inputed_time2;
+	var retVal = confirm(temp + "\n위의 설정이 맞습니까?")
+	if(retVal) {
+		//파싱할 정보 있음
+		window.location.href="";
+		window.open()
+	}
 })
 
 
