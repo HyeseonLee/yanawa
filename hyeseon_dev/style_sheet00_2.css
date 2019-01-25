@@ -17,14 +17,14 @@ body {
 
 
 .link {
-    background-image: url(image/1_main.jpg);
+    background-image: url(../img_src/1_main.jpg);
     background-position:center center;
     background-repeat: no-repeat
 }
 
 
 .image_default {
-    background-image: url(image/1_newbutton.jpg);
+    background-image: url(../img_src/1_new.jpg);
     background-position:center center;
     background-repeat: no-repeat
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .image {
-    background-image: url(image/1_madepromise.jpg);
+    background-image: url(../img_src/1_madepromise.jpg);
     background-position:center center;
     background-repeat: no-repeat
 }
