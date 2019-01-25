@@ -223,11 +223,6 @@
                     // 현재의 위도와 경도
                     now_latitude = now_position.getLat();
                     now_longitude = now_position.getLng();
-                    
-
-                    //원의 반경 안에 들어오면 메세지
-                    // document.write(Math.pow(3, 2), '<br />'); // 9
-
 
                     // 원의 방정식 안으로 들어오면 실행
                     if (Math.pow(now_latitude - 33.4507,2)+Math.pow(now_longitude-126.570667,2)<0.0000002){
@@ -238,14 +233,11 @@
                     if (stop_list[i]){
                         marker_list[i].setPosition(now_position);     
                     }
-                    
-                    
-                    
-                    if(count>100000) {
-                    // 5번 이동을 하면 중지시킨다.
-                        clearInterval(markerInterval);
-            }
-            }
+                    // if(count>100000) {
+                    // // 5번 이동을 하면 중지시킨다.
+                    //     clearInterval(markerInterval);
+            
+                }
             }
                 
             
