@@ -160,7 +160,7 @@
     
         // 지도에 마커 표시
         marker.setMap(map);
-        console.log('######'+marker);
+        
     // ------------------------------------------------------------------------------------------
 
 
@@ -183,39 +183,64 @@
         var latitude_list = [];
         var longitude_list = [];
         var incline_list = [];
+        // stop_list의 안의 값이 1이면 이동 , 0이면 멈추게 하기 위한 리스트
+        var stop_list = [];
         for (var i=0;i<5;i++){
                     latitude_list.push(positions[i].latlng.getLat());
                     longitude_list.push(positions[i].latlng.getLng());
-                    
                     incline_list.push((latitude_list[i]-33.4507)/(longitude_list[i]-126.5706));
+                    stop_list.push(1);
         }
         
         // 버튼 누르면 실행
         function start_button(){
             // 마크 움직이기
             // 약 1초당 move_marker_position 함수를 실행
-            markerInterval = setInterval(move_marker_position, 500); // 600이 1초인거같음
+            markerInterval = setInterval(move_marker_position, 100); // 600이 1초인거같음
         }
 
         // 마커를 이동 시키는 함수
         function move_marker_position() {
             
-            
+                var center_position = new daum.maps.LatLng(33.4507, 126.5706);
             
             
                 count = count + 1;
+                
                 for (var i=0;i<5;i++){
                     // latitude = positions[i].latlng.getLat();
                     // longitude = positions[i].latlng.getLng();
                     // var incline = (latitude-33.4507)/(longitude-126.5706);
                     
+                    // 경도가 원래 지점보다 오른쪽에 잇으면 왼쪽방향으로 움직이도록
                     if (longitude_list[i]>126.5706){
                         var now_position = new daum.maps.LatLng(latitude_list[i]-count*0.00001*incline_list[i] , longitude_list[i]-count*0.00001);
                     }
+                    // 경도가 원래 지점보다 왼쪽에 잇으면 오른쪽방향으로 움직이도록
                     else{
                         now_position = new daum.maps.LatLng(latitude_list[i]+count*0.00001*incline_list[i] , longitude_list[i]+count*0.00001);
                     }
-                    marker_list[i].setPosition(now_position);     
+                    // 현재의 위도와 경도
+                    now_latitude = now_position.getLat();
+                    now_longitude = now_position.getLng();
+                    
+
+                    //원의 반경 안에 들어오면 메세지
+                    // document.write(Math.pow(3, 2), '<br />'); // 9
+
+
+                    // 원의 방정식 안으로 들어오면 실행
+                    if (Math.pow(now_latitude - 33.4507,2)+Math.pow(now_longitude-126.570667,2)<0.0000002){
+                        stop_list[i] = 0;
+                        console.log('원의 내부 입니다.');
+                    }
+                    // console.log('#######'+count); // 값 증가 const가 유지되지 않는다..
+                    if (stop_list[i]){
+                        marker_list[i].setPosition(now_position);     
+                    }
+                    
+                    
+                    
                     if(count>100000) {
                     // 5번 이동을 하면 중지시킨다.
                         clearInterval(markerInterval);
