@@ -51,7 +51,7 @@
             <a href="0_main2.html" class="hidden_back"></a>
 
           <!-- 약속이 생성된 main으로 넘어가야해 -->
-            </div>
+            
 
 
             <div class='container'>
@@ -73,17 +73,7 @@
                 </div>
                 <div id="sub-container3"></div>
                 <div id="sub-container4">
-                    <!-- 랭크 표시하려고 했던 div들 -->
-                    <!-- <div class="temp1">
-                        <div style = 'flex : 50 0 0;'></div>
-                        <div style = 'flex : 764 0 0; display : flex; flex-direction : column; justify-content : space-around'>
-                            <div class="mems" id="ID1"></div>
-                            <div class="mems" id="ID2"></div>
-                            <div class="mems" id="ID3"></div>
-                            <div class="mems" id="ID4"></div>
-                            <div class="mems" id="ID5"></div>
-                        </div>
-                    </div> -->
+                    
                         <div class="rank_map_wrap">
                             <!-- 지도가 들어갈 div -->
                             <div class="map"></div>
@@ -96,6 +86,7 @@
                         
                     <div class="temp2"></div>
                 </div>
+                
             </div>
         </div>
 
@@ -145,7 +136,13 @@
         
         // 이미지 링크, 여기 링크를 우리 사진으로 넣어주면 된다.
         // image 배열을 만들고 url을 담아서 리스트 인덱스로 넘겨주자.
-        var image_src = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        // var image_src = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        var image_src = [];
+        image_src.push("../img_src/6_min.png"); 
+        image_src.push("../img_src/6_jieun.png"); 
+        image_src.push("../img_src/6_jung.png"); 
+        image_src.push("../img_src/6_sun.png"); 
+        image_src.push("../img_src/6_sung.png"); 
         
         marker_list = []
         // 마커 위치 객체의 수만큼 반복
@@ -154,7 +151,7 @@
             // 이미지의 크기 결정
             var image_size = new daum.maps.Size(24,35);
             // 이미지 생성
-            var marker_image = new daum.maps.MarkerImage(image_src, image_size);
+            var marker_image = new daum.maps.MarkerImage(image_src[i], image_size);
 
             // 마커 생성
              marker = new daum.maps.Marker({

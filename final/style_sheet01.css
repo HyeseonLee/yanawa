@@ -87,6 +87,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .main-container {
@@ -332,13 +333,23 @@ body {
     background-repeat: no-repeat
 }
 
+
+/* 
+
+.rank #sub-container4 {
+    display: flex;
+    flex: 810 0 0;
+}
+*/
 .rank #sub-container1 {
     flex: 60 0 0;
+    flex-direction: row;
 }
 
 .rank #sub-container2 {
     flex: 235 0 0;
     display: flex;
+    
 }
 
 .rank #sub-container3 {
@@ -347,17 +358,17 @@ body {
 
 .rank #sub-container4 {
     display: flex;
-    position: relative;
+    /* position: relative;  */
     flex : 810 0 0;
 }
 
-.rank #sub-container4 > .map_wrap {
+/* .rank #sub-container4 > .map_wrap {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
-/* .rank #sub-container4 .temp1 {
+.rank #sub-container4 .temp1 {
     flex : 200 0 0;
     display: flex;
     flex-flow: column;
@@ -365,7 +376,7 @@ body {
 
 .rank #sub-container4 .temp2 {
     flex : 460 0 0;
-} */
+}
 
 /* ------------------랭크 이미지---------------------- */
 /* .rank #ID1 {
