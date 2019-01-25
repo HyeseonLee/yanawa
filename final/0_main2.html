@@ -71,10 +71,55 @@
 
     </div>
 
+    <script type="text/javascript">
+        var temp = location.href.split("?");
 
+        var pms_name;
+        if (temp[1] != null)
+            pms_name = temp[1].split(":")[1];
+        var pms_date;
+        if (temp[2] != null)
+            pms_date = new Date(temp[2].split(":")[1]);
+        var pms_lon;
+        if (temp[3] != null)
+            pms_lon = temp[3].split(":")[1];
+        var pms_lat;
+        if (temp[4] != null)
+            pms_lat = temp[4].split(":")[1];
 
+        if (pms_name == null) {
+            pms_name = "카카오 제주 코딩캠프가 쏜다!";
+        }
+        if (pms_date == null) {
+            pms_date = new Date("2019/01/26/21: 00");
+        }
+        if (pms_lon == null) {
+            pms_lon = 126.570667
+        }
+        if (pms_lat == null) {
+            pms_lat = 33.450701
+        }
 
+        var current_time = new Date()
+        console.log(pms_name)
+        console.log(pms_date)
+        console.log(pms_lon)
+        console.log(pms_lat)
+        console.log(pms_date < current_time)
 
+        d = pms_date;
+        var inputed_time2 = d.getFullYear() + "년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + d.getHours() + "시 " + d.getMinutes() + "분"
+
+        var button = document.getElementsByClassName("hidden_button2")[0]
+        // button.addEventListener('click', function() {
+        //     if(pms_date < current_time) {
+        //         //바로 링크 성공화면
+        //     } else {
+        //             window.open(filePath +"?pms_name:"+pms_name+"&pms_date:"+pms_date+"&pms_lon:"+pms_lon+"&pms_lat:"+pms_lat);
+        //     }
+        // })
+        console.log(button)
+    </script>
 </body>
 
 </html>
