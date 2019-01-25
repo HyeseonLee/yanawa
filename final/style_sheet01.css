@@ -21,6 +21,21 @@ body {
     height: 1136px;
 }
 
+.image {
+  background-image: url(../img_src/before.png);
+  background-position: center center;
+  background-repeat: no-repeat
+}
+
+.hidden_back {
+  background-color: Transparent;
+  border:none;
+  cursor: pointer;
+
+}
+
+
+
 .main-container.intro {
     background-image: url(../img_src/yanawa_intro.jpg);
     background-position: center center;
