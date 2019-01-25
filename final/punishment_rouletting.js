@@ -35,7 +35,9 @@ roulette_Button.addEventListener('click', function() {
         console.log(roulette_text_HTML.innerHTML);
         document.body.classList.toggle('roulette_Button_clicked');
         console.log(rouletting_punishment());
-        textValue.style.color = 'black';
+        textValue.style.color = 'red';
+        textValue.style.fontWeight = 'bold';
+        
         // setTimeout(function() {
             textValue.innerHTML = rouletting_punishment();
         // }, 1000);
