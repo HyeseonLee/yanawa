@@ -22,19 +22,16 @@ body {
 }
 
 .image {
-  background-image: url(../img_src/before.png);
-  background-position: center center;
-  background-repeat: no-repeat
+    background-image: url(../img_src/before.png);
+    background-position: center center;
+    background-repeat: no-repeat
 }
 
 .hidden_back {
-  background-color: Transparent;
-  border:none;
-  cursor: pointer;
-
+    background-color: Transparent;
+    border: none;
+    cursor: pointer;
 }
-
-
 
 .main-container.intro {
     background-image: url(../img_src/yanawa_intro.jpg);
@@ -63,7 +60,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .m-promise .hidden-button {
@@ -74,38 +70,39 @@ body {
 }
 
 .m-promise #container-1, .invited #container-1 {
-    flex : 2 0 0
+    flex: 2 0 0
 }
 
 .m-promise #container-2, .invited #container-2 {
     display: flex;
     flex-direction: row;
-    flex : 1 0 0;
+    flex: 1 0 0;
 }
 
 .m-promise #container-3, .invited #container-3 {
-    flex : 1.775 0 0;
+    flex: 1.775 0 0;
 }
 
 .under-container-1 {
-    flex : 167 0 0;
+    flex: 167 0 0;
 }
+
 .under-container-2 {
-    display : flex;
+    display: flex;
     flex-direction: column;
     justify-content: stretch;
-    flex : 473 0 0;
+    flex: 473 0 0;
 }
 
 .under-container-3 {
     display: flex;
-    flex : 167 0 0;
+    flex: 167 0 0;
 }
 
 .under-container-2 ul {
     display: flex;
     align-items: center;
-    flex : 1 0 0;
+    flex: 1 0 0;
 }
 
 .under-container-2 a {
@@ -113,13 +110,13 @@ body {
     width: 100%;
 }
 
-.m-promise #container-3 > div {
+.m-promise #container-3>div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-/* 맵 width 530 높이 280 */
 
+/* 맵 width 530 높이 280 */
 .main-container.invited {
     background-image: url(../img_src/4_invite.jpg);
     background-position: center center;
@@ -131,7 +128,7 @@ body {
 }
 
 .button_size {
-    width : 527px;
+    width: 527px;
     height: 81px;
     display: flex;
 }
@@ -150,19 +147,19 @@ body {
 }
 
 .invited #container-3 .temp1 {
-    flex : 105 0 0
+    flex: 105 0 0
 }
 
 .invited #container-3 .temp2 {
     display: flex;
     flex-direction: column;
-    flex : 190 0 0;
+    flex: 190 0 0;
     justify-content: space-between;
     align-items: center;
 }
 
 .invited #container-3 .temp3 {
-    flex : 130 0 0
+    flex: 130 0 0
 }
 
 .main-container.start {
@@ -176,64 +173,76 @@ body {
 }
 
 .start #container-1 {
-    flex : 55 0 0;
+    flex: 55 0 0;
 }
 
 .start #container-2 {
-    flex : 530 0 0;
+    flex: 530 0 0;
     display: flex;
     flex-direction: column;
 }
 
 .start #container-3 {
-    flex : 55 0 0;
+    flex: 55 0 0;
 }
 
 .start #sub-container1 {
-    flex : 60 0 0;
+    flex: 60 0 0;
 }
 
 .start #sub-container2 {
-    flex : 235 0 0;
+    flex: 235 0 0;
     display: flex;
     flex-direction: row;
 }
 
 .start #sub-container3 {
-    flex : 75 0 0;
+    flex: 75 0 0;
 }
 
 .start #sub-container4 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    flex : 660 0 0;
+    flex: 660 0 0;
 }
+
 .start #sub-container5 {
-    flex : 110 0 0;
+    flex: 110 0 0;
 }
+
 .start .under-container-2 {
     display: flex;
     justify-content: space-around;
 }
+
 .start #sub-container5 a {
     background-image: url(../img_src/5_start.jpg);
     background-position: center center;
     background-repeat: no-repeat
 }
 
-
 .start #ID1 {
     background-image: url(../img_src/5_member1.jpg);
-}.start #ID2 {
+}
+
+.start #ID2 {
     background-image: url(../img_src/5_member2.jpg);
-}.start #ID3 {
+}
+
+.start #ID3 {
     background-image: url(../img_src/5_member3.jpg);
-}.start #ID4 {
+}
+
+.start #ID4 {
     background-image: url(../img_src/5_member4.jpg);
-}.start #ID5 {
+}
+
+.start #ID5 {
     background-image: url(../img_src/5_member5.jpg);
-}.start #ID6 {
+}
+
+.start #ID6 {
     background-image: url(../img_src/5_member6.jpg);
 }
 
@@ -251,50 +260,59 @@ body {
 }
 
 .rank #sub-container1 {
-    flex : 60 0 0;
+    flex: 60 0 0;
 }
 
 .rank #sub-container2 {
-    flex : 235 0 0;
+    flex: 235 0 0;
     display: flex;
 }
 
 .rank #sub-container3 {
-    flex : 25 0 0;
+    flex: 25 0 0;
 }
 
 .rank #sub-container4 {
     display: flex;
-    flex : 810 0 0;
+    flex: 810 0 0;
 }
 
 .rank #sub-container4 .temp1 {
-    flex : 200 0 0;
+    flex: 200 0 0;
     display: flex;
     flex-flow: column;
 }
 
 .rank #sub-container4 .temp2 {
-    flex : 460 0 0;
+    flex: 460 0 0;
 }
-
 
 .rank #ID1 {
     background-image: url(../img_src/6_rank1.jpg);
-}.rank #ID2 {
+}
+
+.rank #ID2 {
     background-image: url(../img_src/6_rank2.jpg);
-}.rank #ID3 {
+}
+
+.rank #ID3 {
     background-image: url(../img_src/6_rank3.jpg);
-}.rank #ID4 {
+}
+
+.rank #ID4 {
     background-image: url(../img_src/6_rank4.jpg);
-}.rank #ID5 {
+}
+
+.rank #ID5 {
     background-image: url(../img_src/6_rank5.jpg);
-}.rank #ID6 {
+}
+
+.rank #ID6 {
     background-image: url(../img_src/6_rank6.jpg);
 }
 
 .rank .mems {
-    width : 151px;
+    width: 151px;
     height: 137px;
     background-position: center center;
     background-repeat: no-repeat

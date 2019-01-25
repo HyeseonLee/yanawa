@@ -95,13 +95,13 @@ button_yes.addEventListener('click', function() {
 	}
 
 	var d = inputed_time;
-	var inputed_time2 = d.getFullYear() +"년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + d.getHours() + "시 " + d.getMinutes() + "분"
+	var inputed_time2 = d.getFullYear() + "년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + d.getHours() + "시 " + d.getMinutes() + "분"
 	// 현재 지도의 마킹 위치를 체크하고 있는지 확인
 	var temp = "\n약속 이름 : " + pms_name + "\n약속 시간 : " + inputed_time2;
 	var retVal = confirm(temp + "\n위의 설정이 맞습니까?")
-	if(retVal) {
+	if (retVal) {
 		//파싱할 정보 있음
-		window.location.href="";
+		window.location.href = ""
 		window.open()
 	}
 })

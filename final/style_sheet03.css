@@ -1,12 +1,12 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	display : flex;
-	justify-content: center;
-  align-items: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .class-to-align-center {
@@ -15,23 +15,20 @@ body {
     justify-content: center;
 }
 
-
 .link {
     background-image: url(../img_src/3_link.jpg);
-    background-position:center center;
+    background-position: center center;
     background-repeat: no-repeat
 }
 
 .url박스 {
-background-color: Transparent;
-border: none;
-
-/* url주소를 띄워야하는데 투명으로 해야하나,, */
+    background-color: Transparent;
+    border: none;
+    /* url주소를 띄워야하는데 투명으로 해야하나,, */
 }
 
-
 .copy_hidden {
-  background-color: Transparent;
-  border: none;
-  cursor: pointer;
+    background-color: Transparent;
+    border: none;
+    cursor: pointer;
 }
