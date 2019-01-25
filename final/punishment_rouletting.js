@@ -1,7 +1,7 @@
 // 벌칙 리스트 변수
-var punishment_list = [];
+var punishment_list = ['벌칙1','벌칙2','벌칙3'];
 // 기본 벌칙들
-var def = ['벌칙1','벌칙2','벌칙3'];
+var def = ['야밥사!!'];
 
 // punishment_list = copy.def
 
