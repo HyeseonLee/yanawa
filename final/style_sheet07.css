@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display : flex;
+	justify-content: center;
+  align-items: stretch;
+}
+
+.class-to-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    background-image: url(../img_src/7_roulette.jpg);
+    background-position:center center;
+    background-repeat: no-repeat
+}
+
+.roulette {
+    cursor: pointer;
+}
+
+.image {
+  background-image: url(../img_src/7_finish.jpg);
+  background-position:center center;
+  background-repeat: no-repeat
+}
+
+.hidden_button {
+  background-color: Transparent;
+  border:none;
+  cursor: pointer;
+}
