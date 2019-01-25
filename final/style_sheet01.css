@@ -54,6 +54,17 @@ body {
     /* visibility: hidden; */
 }
 
+.rank_map_wrap .link_button{
+    z-index: 10;
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    width: 100px;
+    padding: 10px;
+    opacity: 0.1;
+    /* visibility: hidden; */
+}
+
 /* -------------------------------------------- */
 /* ----------- 1.m_promise.html 의 지도 ------------ */
 
