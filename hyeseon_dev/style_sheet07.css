@@ -16,7 +16,7 @@ body {
 }
 
 .link {
-    background-image: url(image/7_roulette.jpg);
+    background-image: url(../img_src/7_roulette.jpg);
     background-position:center center;
     background-repeat: no-repeat
 }
@@ -26,7 +26,7 @@ body {
 }
 
 .image {
-  background-image: url(image/7_finish.jpg);
+  background-image: url(../img_src/7_finish.jpg);
   background-position:center center;
   background-repeat: no-repeat
 }
