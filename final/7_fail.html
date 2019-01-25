@@ -47,6 +47,34 @@
             bottom: 200px;
             left: 56px;
         }
+
+        .roulette {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #roullette_slot {
+            width : 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text-value {
+            color: transparent;
+            transition: 5s 1s;
+        }
+        .font_ {
+            font-size: 36px;
+            text-align: center;
+            transition: 2s;
+            border-style: solid;
+            background-color: white;
+            /* box-shadow: 0px 0px 20px #000; */
+        }
+        .roulette_Button_clicked #roullette_slot {
+            transform: rotateX(3600deg);
+        }
     </style>
 </head>
 
@@ -59,6 +87,11 @@
             <div class="failpeople"></div>
 
             <div class="roulette">
+                <p id = "roullette_slot" class = "font_ clicked">
+                        <span class='text-value'>
+                            벌칙이 여기 들어갑니다.
+                        </span>
+                </p>
                 <!-- 룰렛에 해당하는 것 넣기 -->
             </div>
 
@@ -71,8 +104,9 @@
 
         </div>
     </div>
+    <script type="text/javascript" src ="punishment_rouletting.js">
 
-
+    </script>
 </body>
 
 </html>
